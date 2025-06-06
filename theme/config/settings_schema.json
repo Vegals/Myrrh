@@ -16,102 +16,102 @@
         "definition": [
           {
             "type": "header",
-            "content": "Typography"
+            "content": "t:general.typography"
           },
           {
             "type": "color",
             "id": "text",
-            "label": "Body",
+            "label": "t:labels.text",
             "default": "#121212"
           },
           {
             "type": "color",
             "id": "headings",
-            "label": "Headings",
+            "label": "t:labels.headings",
             "default": "#121212"
           },
           {
             "type": "color",
             "id": "links",
-            "label": "Links",
+            "label": "t:labels.links",
             "default": "#121212"
           },
           {
             "type": "color",
             "id": "links_hover",
-            "label": "Links hover",
+            "label": "t:labels.links_hover",
             "default": "#121212"
           },
           {
             "type": "header",
-            "content": "Background"
+            "content": "t:labels.background"
           },
           {
             "type": "color",
             "id": "background",
-            "label": "Background",
+            "label": "t:labels.background",
             "default": "#FFFFFF"
           },
           {
             "type": "color_background",
             "id": "background_gradient",
-            "label": "Gradient",
+            "label": "t:labels.gradient",
             "info": "Background gradient replaces background where possible."
           },
           {
             "type": "header",
-            "content": "Buttons"
+            "content": "t:general.buttons"
           },
           {
             "type": "color",
             "id": "primary_button",
-            "label": "Background",
+            "label": "t:labels.background",
             "default": "#121212"
           },
           {
             "type": "color",
             "id": "on_primary_button",
-            "label": "Background hover",
+            "label": "t:labels.background_hover",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "primary_button_text",
-            "label": "Text",
-            "default": "#FFFFFF"
+            "label": "t:labels.text",
+            "default": "#404040"
           },
           {
             "type": "color",
             "id": "primary_button_text_hover",
-            "label": "Text hover",
-            "default": "#121212"
+            "label": "t:labels.text_hover",
+            "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "primary_button_border",
-            "label": "Border",
-            "default": "#121212"
+            "label": "t:labels.border",
+            "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "primary_button_border_hover",
-            "label": "Border hover",
-            "default": "#FFFFFF"
+            "label": "t:labels.border_hover",
+            "default": "#404040"
           },
           {
             "type": "header",
-            "content": "Icons"
+            "content": "t:labels.icons"
           },
           {
             "type": "color",
             "id": "icons",
-            "label": "Icons",
+            "label": "t:labels.icons",
             "default": "#404040"
           },
           {
             "type": "color",
             "id": "icons_hover",
-            "label": "Icons hover",
+            "label": "t:labels.icons_hover",
             "default": "#646464"
           }
         ],
@@ -139,7 +139,7 @@
       {
         "type": "range",
         "id": "base_font_size",
-        "label": "Base font size",
+        "label": "t:labels.base_font_size",
         "min": 14,
         "max": 20,
         "step": 1,
@@ -148,18 +148,18 @@
       },
       {
         "type": "header",
-        "content": "Navigation"
+        "content": "t:labels.navigation"
       },
       {
         "type": "font_picker",
         "id": "menu_font",
-        "label": "Font family",
+        "label": "t:labels.font_family",
         "default": "inter_n4"
       },
       {
         "id": "nav_link_font_size",
         "type": "range",
-        "label": "Size",
+        "label": "t:labels.font_size",
         "min": 12,
         "max": 18,
         "step": 1,
@@ -169,7 +169,7 @@
       {
         "id": "menu_letter_spacing",
         "type": "range",
-        "label": "Letter spacing",
+        "label": "t:labels.letter_spacing",
         "min": -1,
         "max": 2,
         "step": 0.1,
@@ -179,33 +179,33 @@
       {
         "id": "nav_link_text_transform",
         "type": "select",
-        "label": "Text transform",
+        "label": "t:labels.text_transform",
         "options": [
           {
             "value": "none",
-            "label": "None"
+            "label": "t:options.text_transform.none"
           },
           {
             "value": "uppercase",
-            "label": "Uppercase"
+            "label": "t:options.text_transform.uppercase"
           }
         ],
         "default": "none"
       },
       {
         "type": "header",
-        "content": "Headings"
+        "content": "t:labels.headings"
       },
       {
         "type": "font_picker",
         "id": "heading_font",
-        "label": "Font family",
+        "label": "t:labels.font_family",
         "default": "inter_n6"
       },
       {
         "type": "range",
         "id": "heading_letter_spacing",
-        "label": "Letter spacing",
+        "label": "t:labels.letter_spacing",
         "min": -1,
         "max": 2,
         "step": 0.1,
@@ -215,33 +215,33 @@
       {
         "id": "heading_text_transform",
         "type": "select",
-        "label": "Text transform",
+        "label": "t:labels.text_transform",
         "options": [
           {
             "value": "none",
-            "label": "None"
+            "label": "t:options.text_transform.none"
           },
           {
             "value": "uppercase",
-            "label": "Uppercase"
+            "label": "t:options.text_transform.uppercase"
           }
         ],
         "default": "none"
       },
       {
         "type": "header",
-        "content": "Body"
+        "content": "t:labels.body"
       },
       {
         "type": "font_picker",
         "id": "body_font",
-        "label": "Font family",
+        "label": "t:labels.font_family",
         "default": "open_sans_n4"
       },
       {
         "type": "range",
         "id": "body_letter_spacing",
-        "label": "Letter spacing",
+        "label": "t:labels.letter_spacing",
         "min": -1,
         "max": 2,
         "step": 0.1,
@@ -251,33 +251,33 @@
       {
         "id": "body_text_transform",
         "type": "select",
-        "label": "Text transform",
+        "label": "t:labels.text_transform",
         "options": [
           {
             "value": "none",
-            "label": "None"
+            "label": "t:options.text_transform.none"
           },
           {
             "value": "uppercase",
-            "label": "Uppercase"
+            "label": "t:options.text_transform.uppercase"
           }
         ],
         "default": "none"
       },
       {
         "type": "header",
-        "content": "Featured"
+        "content": "t:labels.featured"
       },
       {
         "type": "font_picker",
         "id": "featured_font",
-        "label": "Font family",
+        "label": "t:labels.font_family",
         "default": "playfair_display_n4"
       },
       {
         "type": "range",
         "id": "featured_letter_spacing",
-        "label": "Letter spacing",
+        "label": "t:labels.letter_spacing",
         "min": -2,
         "max": 2,
         "step": 0.1,
@@ -287,15 +287,15 @@
       {
         "id": "featured_text_transform",
         "type": "select",
-        "label": "Text transform",
+        "label": "t:labels.text_transform",
         "options": [
           {
             "value": "none",
-            "label": "None"
+            "label": "t:options.text_transform.none"
           },
           {
             "value": "uppercase",
-            "label": "Uppercase"
+            "label": "t:options.text_transform.uppercase"
           }
         ],
         "default": "none"
@@ -308,7 +308,7 @@
       {
         "type": "range",
         "id": "button_border_radius",
-        "label": "Button border radius",
+        "label": "t:labels.button_border_radius",
         "min": 0,
         "max": 50,
         "step": 1,
