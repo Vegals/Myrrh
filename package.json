@@ -1,0 +1,40 @@
+{
+  "name": "tail",
+  "version": "1.0.0",
+  "description": "CONFIDENTIAL: This repository contains proprietary code for the Shopify theme of Label One. This is a private project and is not open for public use, distribution, or modification.",
+  "main": "scripts.js",
+  "scripts": {
+    "dev": "vite build --watch & npx tailwindcss -i ./input.css -o ./theme/assets/theme.css --watch",
+    "build": "vite build && npx tailwindcss -i ./input.css -o ./theme/assets/theme.css",
+    "build:watch": "vite build --watch",
+    "lint": "eslint theme/assets/scripts.js --config eslint.config.js",
+    "lint:fix": "eslint theme/assets/scripts.js --config eslint.config.js --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-inject": "^5.0.5",
+    "@shopify/eslint-plugin": "^46.0.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8.4.31",
+    "postcss-safe-parser": "^7.0.1",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.3.5",
+    "tailwindcss-buttons": "^1.0.0",
+    "vite": "^6.0.5"
+  },
+  "dependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "aos": "^2.3.4",
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
+    "photoswipe": "^5.4.4",
+    "select2": "^4.1.0-rc.0",
+    "swiper": "^11.1.15"
+  },
+  "type": "module"
+}
