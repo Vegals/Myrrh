@@ -1,5 +1,482 @@
 /* Main theme styles */
 
+/* Import typography first */
+
+/* ==========================================================================
+   Base Typography
+   ========================================================================== */
+
+/* Typography System - 2025 Shopify Best Practices */
+
+/* Base Typography with Performance Optimization */
+
+* {
+  /* Modern font rendering for crisp text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-weight: var(--body-font-weight);
+  font-style: var(--body-font-style);
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: var(--body-text-transform);
+  line-height: 1.6;
+  color: rgb(var(--body-color));
+  
+  /* Enhanced readability */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Heading Hierarchy with Proper Scaling */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  font-style: var(--heading-font-style);
+  letter-spacing: var(--heading-letter-spacing);
+  text-transform: var(--heading-text-transform);
+  line-height: 1.2;
+  color: rgb(var(--heading-color));
+  margin: 0 0 1rem 0;
+  
+  /* Prevent text orphans */
+  text-wrap: balance;
+}
+
+/* Modern fluid typography scaling */
+
+h1, .h1 { 
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: var(--heading-font-weight-bold, 700);
+}
+
+h2, .h2 { 
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: var(--heading-font-weight-bold, 700);
+}
+
+h3, .h3 { 
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--heading-font-weight, 600);
+}
+
+h4, .h4 { 
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-weight: var(--heading-font-weight, 600);
+}
+
+h5, .h5 { 
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: var(--heading-font-weight, 600);
+}
+
+h6, .h6 { 
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: var(--heading-font-weight, 600);
+}
+
+/* Enhanced text styles for rich content */
+
+p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+/* Improved italic handling for articles and rich text */
+
+article em,
+article i,
+.rte em,
+.rte i,
+.rich-text em,
+.rich-text i {
+  font-style: italic;
+  font-weight: var(--body-font-weight-italic, 400);
+}
+
+article strong,
+article b,
+.rte strong,
+.rte b,
+.rich-text strong,
+.rich-text b {
+  font-weight: var(--body-font-weight-bold, 700);
+}
+
+article strong em,
+article b i,
+article em strong,
+article i b,
+.rte strong em,
+.rte b i,
+.rte em strong,
+.rte i b,
+.rich-text strong em,
+.rich-text b i,
+.rich-text em strong,
+.rich-text i b {
+  font-weight: var(--body-font-weight-bold-italic, 700);
+  font-style: italic;
+}
+
+/* Quote styling */
+
+blockquote {
+  font-family: var(--featured-font-family);
+  font-size: 1.25rem;
+  font-style: italic;
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  border-left: 4px solid rgb(var(--heading-color));
+  color: rgb(var(--heading-color));
+}
+
+/* Lists with proper spacing */
+
+ul, ol {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Small text and captions */
+
+small, .small {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Featured/Display text styling */
+
+.featured-text,
+.display-text {
+  font-family: var(--featured-font-family);
+  font-weight: var(--featured-font-weight);
+  font-style: var(--featured-font-style);
+  letter-spacing: var(--featured-letter-spacing);
+  text-transform: var(--featured-text-transform);
+}
+
+/* Navigation link styling */
+
+.nav-link {
+  font-family: var(--menu-font-family);
+  font-weight: var(--menu-font-weight);
+  font-style: var(--menu-font-style);
+  letter-spacing: var(--menu-letter-spacing);
+  text-transform: var(--nav-link-text-transform);
+  font-size: var(--nav-link-font-size);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: rgb(var(--link-color-hover));
+}
+
+/* Header menu container */
+
+.header__menu {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Footer links */
+
+.footer__links a {
+  font-family: var(--body-font-family);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer__links a:hover,
+.footer__links a:focus {
+  color: rgb(var(--link-color-hover));
+}
+
+/* Button typography */
+
+button,
+.button,
+.btn,
+input[type="submit"],
+input[type="button"] {
+  font-family: var(--menu-font-family);
+  font-weight: var(--menu-font-weight-bold, 600);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* Form elements typography */
+
+input,
+textarea,
+select {
+  font-family: var(--body-font-family);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+label {
+  font-weight: var(--body-font-weight-bold, 600);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Accessibility improvements */
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Focus states for better accessibility */
+
+*:focus {
+  outline: 2px solid rgb(var(--link-color));
+  outline-offset: 2px;
+}
+
+/* Mobile typography optimizations */
+
+@media screen and (max-width: 768px) {
+  body {
+    /* Slightly larger base font for mobile readability */
+    font-size: calc(var(--base-font-size, 16px) * 1.05);
+    line-height: 1.7;
+  }
+  
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  
+  p {
+    margin-bottom: 1.25rem;
+  }
+  
+  .nav-link {
+    /* Ensure touch targets are at least 44px */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  a {
+    transition: none;
+  }
+}
+
+/* Print styles */
+
+@media print {
+  body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: black;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    color: black;
+    page-break-after: avoid;
+  }
+  
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+/* Heading Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight);
+    color: rgb(var(--heading-color));
+    text-transform: var(--heading-text-transform);
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: 1.2;
+    vertical-align: baseline;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+/* text-4xl equivalent */
+
+h2 {
+    font-size: 1.875rem;
+}
+
+/* text-3xl equivalent */
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* text-2xl equivalent */
+
+h4 {
+    font-size: 1.25rem;
+}
+
+/* text-xl equivalent */
+
+h5 {
+    font-size: 1.125rem;
+}
+
+/* text-lg equivalent */
+
+h6 {
+    font-size: 1rem;
+}
+
+/* text-base equivalent */
+
+.heading {
+    font-weight: var(--heading-font-weight);
+    font-size: var(--heading-font-size);
+    color: rgb(var(--heading-color));
+    text-transform: var(--heading-text-transform);
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: 1.2;
+    vertical-align: baseline;
+}
+
+.heading a {
+    font-weight: var(--heading-font-weight);
+    font-size: var(--heading-font-size);
+    color: rgb(var(--heading-color));
+    text-transform: var(--heading-text-transform);
+    letter-spacing: var(--heading-letter-spacing);
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Italic Text Fixes for Articles */
+
+.prose i,
+.prose em,
+.rte i,
+.rte em {
+  font-style: italic !important;
+  font-family: var(--body-font-family) !important;
+}
+
+.prose strong i,
+.prose strong em,
+.prose b i,
+.prose b em,
+.rte strong i,
+.rte strong em,
+.rte b i,
+.rte b em {
+  font-style: italic !important;
+  font-weight: var(--body-font-weight-bold-italic) !important;
+  font-family: var(--body-font-family) !important;
+}
+
+/* Additional italic support for article content */
+
+.w-padding.prose i,
+.w-padding.prose em,
+.article-content i,
+.article-content em,
+.default-page-content i,
+.default-page-content em {
+  font-style: italic !important;
+  font-family: var(--body-font-family) !important;
+}
+
+/* Bold italic combinations */
+
+.w-padding.prose strong i,
+.w-padding.prose strong em,
+.w-padding.prose b i,
+.w-padding.prose b em,
+.article-content strong i,
+.article-content strong em,
+.article-content b i,
+.article-content b em,
+.default-page-content strong i,
+.default-page-content strong em,
+.default-page-content b i,
+.default-page-content b em {
+  font-style: italic !important;
+  font-weight: var(--body-font-weight-bold-italic) !important;
+  font-family: var(--body-font-family) !important;
+}
+
+/* Specific targeting for article template classes */
+
+article .prose i,
+article .prose em,
+article .rte i,
+article .rte em,
+.template-article i,
+.template-article em {
+  font-style: italic !important;
+  font-family: var(--body-font-family) !important;
+}
+
+/* Override CSS reset for italic elements globally */
+
+i, em {
+  font-style: italic !important;
+}
+
+/* Ensure proper font-family for all italic text */
+
+body i,
+body em {
+  font-family: var(--body-font-family) !important;
+  font-style: italic !important;
+}
+
 /* Import all theme-specific components */
 
 /* Header styles - extracted from theme/sections/header.liquid */
@@ -130,4 +607,128 @@ footer .footer__payment {
   padding: 3px 10px 5px;
   text-decoration: none;
 }
+
+/* Image component styles - extracted from theme/snippets/image.liquid */
+
+.image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.image > img {
+  width: 100%;
+  height: auto;
+}
+
+/* Search page styles - extracted from theme/sections/search.liquid */
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.search-results .prev,
+.search-results .page,
+.search-results .next {
+  grid-column: 1 / -1;
+}
+
+/* Collections grid styles - extracted from theme/sections/collections.liquid */
+
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--collection-card-size), 100%), 1fr));
+  gap: var(--grid-gap);
+}
+
+.collections--compact {
+  --collection-card-size: 160px;
+}
+
+.collections--full {
+  --collection-card-size: 280px;
+}
+
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Custom section styles - extracted from theme/sections/custom-section.liquid */
+
+.custom-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-section__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.custom-section__background img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-section__content {
+  display: grid;
+  grid-template-columns: var(--content-grid);
+}
+
+.custom-section__content > * {
+  grid-column: 2;
+}
+
+/* Block component styles - extracted from theme/blocks/ */
+
+/* Group block styles - from theme/blocks/group.liquid */
+
+.group {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.group--horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding);
+}
+
+.group--vertical {
+  flex-direction: column;
+  align-items: var(--alignment);
+  padding: var(--padding) 0;
+}
+
+/* Text block styles - from theme/blocks/text.liquid */
+
+.text {
+  text-align: var(--text-align);
+}
+
+.text--title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text--subtitle {
+  font-size: 1.5rem;
+}
+
 

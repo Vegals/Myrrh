@@ -1,18 +1,219 @@
 {% style %}
-  {% # Loads all font variantions with display: swap %}
-  {{ settings.type_primary_font | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {% # Load all font variations with display: swap for optimal performance %}
+  {% liquid
+    assign font_body = settings.body_font
+    assign font_body_bold = font_body | font_modify: 'weight', 'bold'
+    assign font_body_italic = font_body | font_modify: 'style', 'italic'
+    assign font_body_bold_italic = font_body | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic'
+    echo font_body | font_face: font_display: 'swap'
+    echo font_body_bold | font_face: font_display: 'swap'
+    echo font_body_italic | font_face: font_display: 'swap'
+    echo font_body_bold_italic | font_face: font_display: 'swap'
+
+    assign font_header = settings.heading_font
+    assign font_header_bold = font_header | font_modify: 'weight', 'bold'
+    assign font_header_italic = font_header | font_modify: 'style', 'italic'
+    assign font_header_bold_italic = font_header | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic'
+    echo font_header | font_face: font_display: 'swap'
+    echo font_header_bold | font_face: font_display: 'swap'
+    echo font_header_italic | font_face: font_display: 'swap'
+    echo font_header_bold_italic | font_face: font_display: 'swap'
+
+    assign font_menu = settings.menu_font
+    assign font_menu_bold = font_menu | font_modify: 'weight', 'bold'
+    assign font_menu_italic = font_menu | font_modify: 'style', 'italic'
+    assign font_menu_bold_italic = font_menu | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic'
+    echo font_menu | font_face: font_display: 'swap'
+    echo font_menu_bold | font_face: font_display: 'swap'
+    echo font_menu_italic | font_face: font_display: 'swap'
+    echo font_menu_bold_italic | font_face: font_display: 'swap'
+
+    assign font_featured = settings.featured_font
+    assign font_featured_bold = font_featured | font_modify: 'weight', 'bold'
+    assign font_featured_italic = font_featured | font_modify: 'style', 'italic'
+    assign font_featured_bold_italic = font_featured | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic'
+    echo font_featured | font_face: font_display: 'swap'
+    echo font_featured_bold | font_face: font_display: 'swap'
+    echo font_featured_italic | font_face: font_display: 'swap'
+    echo font_featured_bold_italic | font_face: font_display: 'swap'
+  %}
+
+  {% # Color scheme variables %}
+  {% for scheme in settings.color_schemes -%}
+    {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+    {% if forloop.index == 1 -%}
+      :root,
+    {%- endif %}
+    .color-{{ scheme.id }} {
+      --primary-background-color: {% if scheme.settings.background == "rgba(0,0,0,0)" or scheme.settings.background == "transparent" %}transparent{% else %}{{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }}{% endif %};
+      {% if scheme.settings.background == "rgba(0,0,0,0)" or scheme.settings.background == "transparent" %}
+        background-color: transparent !important;
+      {% endif %}
+      {% if scheme.settings.background_gradient != empty %}
+        --gradient-background: {{ scheme.settings.background_gradient }};
+      {% else %}
+        --gradient-background: {{ scheme.settings.background }};
+      {% endif %}
+      --primary-background-color-darkened: {{ scheme.settings.background | color_darken: 10 }};
+      --primary-background-color-lightened: {{ scheme.settings.background | color_lighten: 10 }};
+      --body-color: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+      --body-color-darkened: {{ scheme.settings.text | color_darken: 20 | color_extract: 'red' }},{{ scheme.settings.text | color_darken: 20 | color_extract: 'green' }},{{ scheme.settings.text | color_darken: 20 | color_extract: 'blue' }};
+      --body-color-lightened: {{ scheme.settings.text | color_lighten: 20 | color_extract: 'red' }},{{ scheme.settings.text | color_lighten: 20 | color_extract: 'green' }},{{ scheme.settings.text | color_lighten: 20 | color_extract: 'blue' }};
+      --heading-color: {{ scheme.settings.headings.red }},{{ scheme.settings.headings.green }},{{ scheme.settings.headings.blue }};
+      --heading-color-darkened: {{ scheme.settings.headings | color_darken: 25 | color_extract: 'red' }},{{ scheme.settings.headings | color_darken: 25 | color_extract: 'green' }},{{ scheme.settings.headings | color_darken: 25 | color_extract: 'blue' }};
+      --heading-color-lightened: {{ scheme.settings.headings | color_lighten: 25 | color_extract: 'red' }},{{ scheme.settings.headings | color_lighten: 25 | color_extract: 'green' }},{{ scheme.settings.headings | color_lighten: 25 | color_extract: 'blue' }};
+
+      --link-color: {{ scheme.settings.links.red }},{{ scheme.settings.links.green }},{{ scheme.settings.links.blue }};
+      --link-color-hover: {{ scheme.settings.links_hover.red }},{{ scheme.settings.links_hover.green }},{{ scheme.settings.links_hover.blue }};
+      --link-color-hover-darkened: {{ scheme.settings.links_hover | color_darken: 20 | color_extract: 'red' }},{{ scheme.settings.links_hover | color_darken: 20 | color_extract: 'green' }},{{ scheme.settings.links_hover | color_darken: 20 | color_extract: 'blue' }};
+      --link-color-hover-lightened: {{ scheme.settings.links_hover | color_lighten: 20 | color_extract: 'red' }},{{ scheme.settings.links_hover | color_lighten: 20 | color_extract: 'green' }},{{ scheme.settings.links_hover | color_lighten: 20 | color_extract: 'blue' }};
+
+      --button-text: {{ scheme.settings.primary_button_text.red }},{{ scheme.settings.primary_button_text.green }},{{ scheme.settings.primary_button_text.blue }};
+      --button-text-hover: {{ scheme.settings.primary_button_text_hover.red }},{{ scheme.settings.primary_button_text_hover.green }},{{ scheme.settings.primary_button_text_hover.blue }};
+      --button-border: {{ scheme.settings.primary_button_border.red }},{{ scheme.settings.primary_button_border.green }},{{ scheme.settings.primary_button_border.blue }};
+      --button-border-hover: {{ scheme.settings.primary_button_border_hover.red }},{{ scheme.settings.primary_button_border_hover.green }},{{ scheme.settings.primary_button_border_hover.blue }};
+      {% if scheme.settings.primary_button == "rgba(0,0,0,0)" or scheme.settings.primary_button == blank or scheme.settings.primary_button == "transparent" %}
+        --button-background: 0,0,0,0;
+      {% else %}
+        --button-background: {{ scheme.settings.primary_button.red }},{{ scheme.settings.primary_button.green }},{{ scheme.settings.primary_button.blue }};
+      {% endif %}
+      {% if scheme.settings.on_primary_button == "rgba(0,0,0,0)" or scheme.settings.on_primary_button == blank or scheme.settings.on_primary_button == "transparent" %}
+        --button-background-hover: 0,0,0,0;
+      {% else %}
+        --button-background-hover: {{ scheme.settings.on_primary_button.red }},{{ scheme.settings.on_primary_button.green }},{{ scheme.settings.on_primary_button.blue }};
+      {% endif %}
+
+      --icons: {{ scheme.settings.icons.red }},{{ scheme.settings.icons.green }},{{ scheme.settings.icons.blue }};
+      --icons-hover: {{ scheme.settings.icons_hover.red }},{{ scheme.settings.icons_hover.green }},{{ scheme.settings.icons_hover.blue }};
+    }
+  {% endfor %}
+
+  {{ scheme_classes | prepend: 'body' }} {
+    color: rgb(var(--body-color), 0.75);
+    {% if scheme.settings.background == "rgba(0,0,0,0)" or scheme.settings.background == "transparent" %}
+      background-color: transparent;
+    {% else %}
+      background-color: rgba(var(--primary-background-color));
+    {% endif %}
+  }
 
   :root {
-    --font-primary--family: {{ settings.type_primary_font.family }}, {{ settings.type_primary_font.fallback_families }};
-    --font-primary--style: {{ settings.type_primary_font.style }};
-    --font-primary--weight: {{ settings.type_primary_font.weight }};
+    font-size: {{ settings.base_font_size }}px;
+
+    /* Modern 2025 Typography Variables */
+    --body-font-family: {{ settings.body_font.family }}, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --body-font-style: {{ settings.body_font.style }};
+    --body-font-weight: {{ settings.body_font.weight }};
+    --body-letter-spacing: {{ settings.body_letter_spacing }}px;
+    --body-text-transform: {{ settings.body_text_transform }};
+
+    --heading-font-family: {{ font_header.family }}, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --heading-font-style: {{ settings.heading_font.style }};
+    --heading-font-weight: {{ settings.heading_font.weight }};
+    --heading-letter-spacing: {{ settings.heading_letter_spacing }}px;
+    --heading-text-transform: {{ settings.heading_text_transform }};
+
+    --menu-font-family: {{ font_menu.family }}, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --menu-font-style: {{ settings.menu_font.style }};
+    --menu-font-weight: {{ font_menu.weight }};
+    --menu-letter-spacing: {{ settings.menu_letter_spacing }}px;
+    --nav-link-text-transform: {{ settings.nav_link_text_transform }};
+    --nav-link-font-size: {{ settings.nav_link_font_size }}px;
+
+    --featured-font-family: {{ font_featured.family }}, Georgia, 'Times New Roman', Times, serif;
+    --featured-font-style: {{ settings.featured_font.style }};
+    --featured-font-weight: {{ settings.featured_font.weight }};
+    --featured-letter-spacing: {{ settings.featured_letter_spacing }}px;
+    --featured-text-transform: {{ settings.featured_text_transform }};
+
+    /* Font weights for all variations */
+    --body-font-weight-bold: {{ font_body_bold.weight | default: 700 }};
+    --body-font-weight-italic: {{ font_body_italic.weight | default: 400 }};
+    --body-font-weight-bold-italic: {{ font_body_bold_italic.weight | default: 700 }};
+    --heading-font-weight-bold: {{ font_header_bold.weight | default: 700 }};
+    --heading-font-weight-italic: {{ font_header_italic.weight | default: 600 }};
+    --heading-font-weight-bold-italic: {{ font_header_bold_italic.weight | default: 700 }};
+    --menu-font-weight-bold: {{ font_menu_bold.weight | default: 600 }};
+    --menu-font-weight-italic: {{ font_menu_italic.weight | default: 400 }};
+    --menu-font-weight-bold-italic: {{ font_menu_bold_italic.weight | default: 600 }};
+    --featured-font-weight-bold: {{ font_featured_bold.weight | default: 700 }};
+    --featured-font-weight-italic: {{ font_featured_italic.weight | default: 400 }};
+    --featured-font-weight-bold-italic: {{ font_featured_bold_italic.weight | default: 700 }};
+
+    /* Layout and performance */
     --page-width: {{ settings.max_page_width }};
     --page-margin: {{ settings.min_page_margin }}px;
-    --color-background: {{ settings.background_color }};
-    --color-foreground: {{ settings.foreground_color }};
-    --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+    --button-border-radius: {{ settings.button_border_radius }}px;
+    --button-min-height: 44px; /* Improved for touch targets */
+
+    /* Grid layout for 2025 */
+    --content-grid: 1fr min(var(--page-width), 100% - var(--page-margin) * 2) 1fr;
+
+    /* Legacy support for older themes */
+    --font-primary--family: var(--body-font-family);
+    --font-primary--style: var(--body-font-style);
+    --font-primary--weight: var(--body-font-weight);
+  }
+
+  /* Navigation elements with improved accessibility */
+  .nav-link {
+    font-family: var(--menu-font-family);
+    font-style: var(--menu-font-style);
+    font-weight: var(--menu-font-weight);
+    letter-spacing: var(--menu-letter-spacing);
+    text-transform: var(--nav-link-text-transform);
+    font-size: var(--nav-link-font-size);
+    transition: color 0.2s ease-in-out;
+  }
+
+  .featured-font {
+    font-family: var(--featured-font-family);
+    font-style: var(--featured-font-style);
+    font-weight: var(--featured-font-weight);
+    letter-spacing: var(--featured-letter-spacing);
+    text-transform: var(--featured-text-transform);
+  }
+
+  /* Improved link styles */
+  a {
+    color: rgb(var(--link-color));
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover,
+  a:focus {
+    color: rgb(var(--link-color-hover));
+  }
+
+  /* Modern button styles */
+  button, .button, input[type="submit"] {
+    background-color: rgb(var(--button-background));
+    color: rgb(var(--button-text));
+    border: 1px solid rgb(var(--button-border));
+    border-radius: var(--button-border-radius);
+    min-height: var(--button-min-height);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  button:hover, 
+  button:focus,
+  .button:hover, 
+  .button:focus,
+  input[type="submit"]:hover,
+  input[type="submit"]:focus {
+    background-color: rgb(var(--button-background-hover));
+    color: rgb(var(--button-text-hover));
+    border-color: rgb(var(--button-border-hover));
+  }
+
+  /* Font optimization for mobile */
+  @media (max-width: 768px) {
+    :root {
+      font-size: calc({{ settings.base_font_size }}px * 0.9);
+    }
   }
 {% endstyle %}
+
+
+
