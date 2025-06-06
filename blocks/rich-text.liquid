@@ -1,0 +1,55 @@
+{% comment %}
+  Rich Text Block - Full rich text content support
+{% endcomment %}
+
+<div 
+  class="rich-text {{ block.settings.text_size }}"
+  style="--text-align: {{ block.settings.alignment }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.content != blank %}
+    {{ block.settings.content }}
+  {% else %}
+    <div class="rich-text__placeholder">
+      <p>Enter your rich text content here. You can add paragraphs, lists, links, and more.</p>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        { "value": "text-sm", "label": "Small" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "Large" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-base lg:text-lg", "label": "Base / desktop Large" },
+        { "value": "text-lg lg:text-xl", "label": "Large / desktop XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment", 
+      "label": "Alignment",
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text"
+    }
+  ]
+}
+{% endschema %} 

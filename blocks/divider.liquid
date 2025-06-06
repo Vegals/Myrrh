@@ -1,0 +1,80 @@
+{% comment %}
+  Divider Block - Customizable divider/separator
+{% endcomment %}
+
+<div 
+  class="divider divider--{{ block.settings.style }}"
+  style="
+    --divider-thickness: {{ block.settings.thickness }}px;
+    --divider-color: {{ block.settings.color }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {% case block.settings.style %}
+    {% when 'solid' %}
+      <hr class="divider-line divider-solid">
+    {% when 'dashed' %}
+      <hr class="divider-line divider-dashed">
+    {% when 'dots' %}
+      <div class="divider-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    {% when 'gradient' %}
+      <div class="divider-gradient"></div>
+  {% endcase %}
+</div>
+
+{% schema %}
+{
+  "name": "Divider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid line"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed line"
+        },
+        {
+          "value": "dots",
+          "label": "Dots"
+        },
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "label": "Thickness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#e5e5e5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Divider"
+    }
+  ]
+}
+{% endschema %} 

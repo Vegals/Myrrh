@@ -1,0 +1,170 @@
+{% style %}
+  /* Section Layout System - 2025 Modern Standards */
+  .section-spacing {
+    --section-padding-none: 0;
+    --section-padding-small: 1rem;
+    --section-padding-medium: 2rem;
+    --section-padding-large: 3rem;
+    --section-padding-xl: 4rem;
+  }
+
+  .section-layout {
+    position: relative;
+    width: 100%;
+  }
+
+  .section-content {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Spacing Size Classes */
+  .section-spacing-none .w-padding {
+    padding-left: var(--section-padding-none);
+    padding-right: var(--section-padding-none);
+  }
+
+  .section-spacing-small .w-padding {
+    padding-left: var(--section-padding-small);
+    padding-right: var(--section-padding-small);
+  }
+
+  .section-spacing-medium .w-padding {
+    padding-left: var(--section-padding-medium);
+    padding-right: var(--section-padding-medium);
+  }
+
+  .section-spacing-large .w-padding {
+    padding-left: var(--section-padding-large);
+    padding-right: var(--section-padding-large);
+  }
+
+  .section-spacing-xl .w-padding {
+    padding-left: var(--section-padding-xl);
+    padding-right: var(--section-padding-xl);
+  }
+
+  /* Header Layout Responsive Adjustments */
+  {% if settings.header_layout == 'center' or settings.header_layout == 'inline' %}
+    .section-full .section-spacing-none .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .section-full .section-spacing-small .w-padding,
+    .section-full .section-spacing-medium .w-padding,
+    .section-full .section-spacing-large .w-padding,
+    .section-full .section-spacing-xl .w-padding {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-gap .section-spacing-none .w-padding,
+    .section-gap .section-spacing-small .w-padding,
+    .section-gap .section-spacing-medium .w-padding,
+    .section-gap .section-spacing-large .w-padding,
+    .section-gap .section-spacing-xl .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  {% endif %}
+
+  {% if settings.header_layout == 'left' %}
+    .section-full .section-spacing-none .w-padding,
+    .section-full .section-spacing-small .w-padding,
+    .section-full .section-spacing-medium .w-padding,
+    .section-full .section-spacing-large .w-padding,
+    .section-full .section-spacing-xl .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .section-gap .section-spacing-none .w-padding,
+    .section-gap .section-spacing-small .w-padding,
+    .section-gap .section-spacing-medium .w-padding,
+    .section-gap .section-spacing-large .w-padding,
+    .section-gap .section-spacing-xl .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  {% endif %}
+
+  /* Mobile Responsive Design */
+  @media (max-width: 768px) {
+    .section-spacing {
+      --section-padding-small: 0.75rem;
+      --section-padding-medium: 1.5rem;
+      --section-padding-large: 2rem;
+      --section-padding-xl: 2.5rem;
+    }
+
+    .section-gap .section-spacing-none .w-padding,
+    .section-gap .section-spacing-small .w-padding,
+    .section-gap .section-spacing-medium .w-padding,
+    .section-gap .section-spacing-large .w-padding,
+    .section-gap .section-spacing-xl .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .section-full .section-spacing-none .w-padding,
+    .section-full .section-spacing-small .w-padding,
+    .section-full .section-spacing-medium .w-padding,
+    .section-full .section-spacing-large .w-padding,
+    .section-full .section-spacing-xl .w-padding {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  /* Tablet Responsive Design */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .section-spacing {
+      --section-padding-medium: 1.75rem;
+      --section-padding-large: 2.5rem;
+      --section-padding-xl: 3rem;
+    }
+  }
+
+  /* Alternative Color Triggers */
+  .alt-color-active {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Disable Header Space */
+  .disable-header-space {
+    margin-top: calc(-1 * var(--header-height, 0px));
+  }
+
+  /* Content Border Utilities */
+  .content-border {
+    position: relative;
+  }
+
+  /* Animation Support */
+  .section-content[data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .section-content[data-animate].animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Grid Layout Support for 2025 */
+  .section-layout {
+    display: grid;
+    grid-template-columns: var(--content-grid);
+  }
+
+  .section-content {
+    grid-column: 2;
+  }
+
+  /* Full Width Override */
+  .section-full .section-content {
+    grid-column: 1 / -1;
+  }
+{% endstyle %} 

@@ -1,0 +1,99 @@
+{% comment %}
+  Container Block - Enhanced layout container with grid support
+{% endcomment %}
+
+<div 
+  class="container container--{{ block.settings.layout }} color-{{ block.settings.color_scheme }}"
+  style="
+    --container-gap: {{ block.settings.gap }}px;
+    --text-align: {{ block.settings.alignment }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Container",
+  "blocks": [{ "type": "@theme" }],
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout direction",
+      "options": [
+        {
+          "value": "vertical",
+          "label": "Vertical (Stack)"
+        },
+        {
+          "value": "horizontal",
+          "label": "Horizontal (Row)"
+        },
+        {
+          "value": "grid-2",
+          "label": "2 Column Grid"
+        },
+        {
+          "value": "grid-3",
+          "label": "3 Column Grid"
+        },
+        {
+          "value": "grid-4",
+          "label": "4 Column Grid"
+        }
+      ],
+      "default": "vertical"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Content alignment",
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between items",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Column",
+      "settings": {
+        "layout": "vertical"
+      }
+    },
+    {
+      "name": "Row",
+      "settings": {
+        "layout": "horizontal"
+      }
+    },
+    {
+      "name": "2 Columns",
+      "settings": {
+        "layout": "grid-2"
+      }
+    },
+    {
+      "name": "3 Columns",
+      "settings": {
+        "layout": "grid-3"
+      }
+    }
+  ]
+}
+{% endschema %} 

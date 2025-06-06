@@ -1,0 +1,99 @@
+{% comment %}
+  Collection Card Block - Display collection
+{% endcomment %}
+
+<div 
+  class="collection-card"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.collection != blank %}
+    {% assign collection = block.settings.collection %}
+    
+    <div class="collection-card__image">
+      <a href="{{ collection.url }}" class="collection-card__image-link">
+        {% if collection.featured_image %}
+          {% render 'responsive-image',
+             image: collection.featured_image,
+             alt: collection.featured_image.alt | default: collection.title,
+             class: 'collection-card__img',
+             max_width: 600,
+             sizes: '(min-width: 768px) 33vw, 50vw',
+             type: 'collection'
+          %}
+        {% else %}
+          {% render 'responsive-image', type: 'collection', class: 'collection-card__img' %}
+        {% endif %}
+      </a>
+    </div>
+    
+    <div class="collection-card__info">
+      <h3 class="collection-card__title {{ block.settings.title_size }}">
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+      </h3>
+      
+      {% if block.settings.show_description and collection.description != blank %}
+        <div class="collection-card__description">
+          {{ collection.description | truncate: 120 }}
+        </div>
+      {% endif %}
+      
+      {% if block.settings.show_product_count %}
+        <div class="collection-card__count">
+          {{ collection.products_count }} 
+          {% if collection.products_count == 1 %}product{% else %}products{% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="collection-card__placeholder">
+      {% render 'responsive-image', type: 'collection', class: 'collection-card__img' %}
+      <div class="collection-card__info">
+        <h3 class="collection-card__title {{ block.settings.title_size }}">Collection Title</h3>
+        <div class="collection-card__description">Collection description</div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection Card",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "Large" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-base lg:text-lg", "label": "Base / desktop Large" },
+        { "value": "text-lg lg:text-xl", "label": "Large / desktop XL" }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_count",
+      "label": "Show product count",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Card"
+    }
+  ]
+}
+{% endschema %} 

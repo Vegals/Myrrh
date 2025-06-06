@@ -1,0 +1,70 @@
+{% comment %}
+  Renders a responsive image
+  Accepts:
+  - image: {Object} Image object
+  - class: {String} Additional CSS classes (optional)
+  - sizes: {String} Sizes attribute for the image (optional)
+  - type: {String} Type of placeholder image to display if no image is provided (optional)
+  - max_width: {Number} Maximum width of the container (optional)
+  - alt: {String} Alt text for the image (optional)
+{% endcomment %}
+
+{%- liquid
+  if section.index > 2
+    assign loading = "lazy"
+  else
+    assign loading = "eager"
+  endif
+
+  assign image_aspect_ratio = image.aspect_ratio | default: 1
+  assign max_width = max_width | default: 2000 | at_most: 3000
+  assign widths = '180,360,540,720,900,1080,1296,1512,1728,1944,2160,2376,2592,2808,3024'
+-%}
+
+{% if class != blank %}
+  {% assign image_class = 'w-full h-full object-cover image-loading' | append: ' ' | append: class %}
+{% else %}
+  {% assign image_class = 'w-full h-full object-cover image-loading' %}
+{% endif %}
+
+{% capture sizes %}
+  {% if sizes == blank %}
+    (min-width: 768px) 100vw, (min-width: 767px) 100vw, 100vw
+  {% else %}
+    {{ sizes }}
+  {% endif %}
+{% endcapture %}
+
+{% if image != blank %}
+<div class="responsive-image-container">
+  <div class="image-placeholder w-full h-full"></div>
+  {{
+    image
+    | image_url: width: max_width
+    | image_tag:
+      width: image.width,
+      height: image.height,
+      class: image_class,
+      sizes: sizes,
+      widths: widths,
+      loading: loading,
+      aspect_ratio: image_aspect_ratio,
+      alt: alt | default: image.alt
+  }}
+</div>
+{% else %}
+  {% case type %}
+    {% when 'article' %}
+      {{ 'lifestyle-1' | placeholder_svg_tag | replace: '<svg', '<svg class="svg-size"' }}
+    {% when 'hero' %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag | replace: '<svg', '<svg class="svg-size"' }}
+    {% when 'product' %}
+      {{ 'product-1' | placeholder_svg_tag | replace: '<svg', '<svg class="svg-size"' }}
+    {% when 'collection' %}
+      {{ 'collection-1' | placeholder_svg_tag | replace: '<svg', '<svg class="svg-size"' }}
+    {% else %}
+      <div class="placeholder-image">
+        {{ 'image' | placeholder_svg_tag | replace: '<svg', '<svg class="svg-size"' }}
+      </div>
+  {% endcase %}
+{% endif %} 

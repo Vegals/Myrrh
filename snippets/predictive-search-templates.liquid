@@ -1,0 +1,37 @@
+{% comment %} Predictive Search Results Names {% endcomment %} 
+
+{% if settings.enable_search %}
+    <div id="predictive-search-templates" style="display: none;">
+      <div id="loading-template">
+        <h3 class="p-4 ps-ep">{{ 'general.predictive_search.loading' | t }}</h3>
+      </div>
+    
+      <div id="error-template">
+        <p class="p-4 ps-ep">{{ 'general.predictive_search.error_occurred' | t }}<span id="error-message"></span></p>
+      </div>
+    
+      <div id="no-results-template">
+        <p class="p-4 ps-ep">{{ 'general.predictive_search.no_results' | t }}</p>
+      </div>
+    
+      <div id="products-template">
+        <h3 class="border-b p-2 mb-2 ps-ep">{{ 'general.predictive_search.products' | t }}</h3>
+        <div id="products-list"></div>
+      </div>
+    
+      <div id="articles-template">
+        <h3 class="border-b p-2 mb-2 ps-ep">{{ 'general.predictive_search.articles' | t }}</h3>
+        <div id="articles-list"></div>
+      </div>
+    
+      <div id="pages-template">
+        <h3 class="border-b p-2 mb-2 ps-ep">{{ 'general.predictive_search.pages' | t }}</h3>
+        <div id="pages-list"></div>
+      </div>
+    
+      <div id="collections-template">
+        <h3 class="border-b p-2 mb-2 ps-ep">{{ 'general.predictive_search.collections' | t }}</h3>
+        <div id="collections-list"></div>
+      </div>
+    </div>
+    {% endif %}

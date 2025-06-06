@@ -1,0 +1,66 @@
+{% comment %}
+  Reusable Section Wrapper - 2025 Modern Layout System
+  
+  Usage:
+  {% capture section_content %}
+    <div class="w-padding">
+      <!-- Your section content here -->
+    </div>
+  {% endcapture %}
+  {% render 'section-wrapper', section_content: section_content, section: section %}
+  
+  Optional parameters:
+  - section_content: The content to wrap (required)
+  - section: Section object for settings (required)
+  - additional_classes: Extra CSS classes
+  - is_complementary: Boolean for complementary sections
+  - has_complementary_content: Boolean for complementary content styling
+  - apply_alt_color_trigger: Boolean to control alt color application
+{% endcomment %}
+
+{% assign spacing_size = section.settings.section_spacing_size | default: 'medium' %}
+
+{% render 'section-wrapper-css' %}
+
+{% comment %}Check if this is an infinite scroll container{% endcomment %}
+{% assign is_infinite_scroll = false %}
+{% if section_content contains 'id="product-grid"' or section_content contains 'id="collection-grid-' or section_content contains 'id="search-results-' or section_content contains 'id="BlogGridContainer"' %}
+  {% assign is_infinite_scroll = true %}
+{% endif %}
+
+<div class="section-spacing">
+    <div class="section-layout carousel-container color-{{ section.settings.color_scheme }} gradient
+             {% if section.settings.add_gap %}mx-2 section-gap{% else %}mx-0 section-full{% endif %}
+             {% if section.settings.disable_main_header_space %}disable-header-space{% endif %}
+             {% if section.settings.use_alt_color and apply_alt_color_trigger != false %}alt-color-active{% endif %}
+             {{ additional_classes }}"
+             data-use-alt-color="{% if section.settings.use_alt_color %}true{% else %}false{% endif %}">
+
+        <div class="section-content {% if is_complementary != true or has_complementary_content %}content-border{% endif %}"
+         {% if is_infinite_scroll != true %}{% render 'animate-section' %}{% endif %}
+         data-border-content_top data-margin-content_top
+         {% if section.settings.add_gap == true %}
+            data-border-content_left data-border-content_right
+         {% endif %}
+         >
+            <div class="{% case spacing_size %}
+                        {% when 'none' %}
+                            section-spacing-none
+                        {% when 'small' %}
+                            section-spacing-small
+                        {% when 'medium' %}
+                            section-spacing-medium
+                        {% when 'large' %}
+                            section-spacing-large
+                        {% when 'xl' %}
+                            section-spacing-xl
+                        {% endcase %}"
+                        style="padding-top: {{ section.settings.vertical_section_padding_top | default: 0 }}px;
+                        padding-bottom: {{ section.settings.vertical_section_padding_bottom | default: 0 }}px;">
+
+                {{ section_content }}
+
+            </div>
+        </div>
+    </div>
+</div> 

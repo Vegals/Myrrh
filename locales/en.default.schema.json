@@ -68,7 +68,8 @@
     "border": "Border",
     "border_hover": "Border hover",
     "icons": "Icons",
-    "icons_hover": "Icons hover"
+    "icons_hover": "Icons hover",
+    "page_animation": "Page animation"
   },
   "options": {
     "alignment": {
@@ -96,6 +97,12 @@
     "text_transform": {
       "none": "None",
       "uppercase": "Uppercase"
+    },
+    "animation": {
+      "none": "None",
+      "fade": "Fade in",
+      "slide_up": "Slide up",
+      "scale_out": "Scale out"
     }
   }
 }

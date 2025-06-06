@@ -1,0 +1,131 @@
+{% assign cart_drawer_small = '380px' %}
+{% assign cart_drawer_large = '580px' %}
+{% assign cart_drawer_width = cart_drawer_small %}
+{% if settings.cart_drawer_size == 'large' %}
+  {% assign cart_drawer_width = cart_drawer_large %}
+{% endif %}
+
+{% comment %}
+  =============================================================================
+  CART DRAWER
+  Handles the cart drawer UI and functionality when cart type is set to drawer
+  =============================================================================
+{% endcomment %}
+{% if settings.cart_type == 'drawer' %}
+
+  {% # theme-check-disable UnusedAssign %}
+  {% capture cart_drawer_content %}
+    {% render 'cart-drawer-content' %}
+  {% endcapture %}
+
+  {% capture cart_drawer_header %}
+    {% render 'cart-drawer-header' %}
+  {% endcapture %}
+
+  {% assign drawer_data_attrs = 'data-cart-drawer data-cart-drawer-size="' | append: settings.cart_drawer_size | append: '"' %}
+  {% # theme-check-enable UnusedAssign %}
+
+  {% render 'drawer',
+    position: 'right',
+    width: cart_drawer_width,
+    mobile_width: '100%',
+    has_background: settings.drawer_background,
+    data_attribute: drawer_data_attrs,
+    content: cart_drawer_content,
+    custom_header: cart_drawer_header,
+    drawer_class: 'cart-drawer-container color-{{ settings.cart_drawer_color_scheme }}',
+    color_scheme: settings.cart_drawer_color_scheme
+  %}
+{% endif %}
+
+{% comment %}
+  =============================================================================
+  PRODUCT PAGE DRAWERS
+  Size guide and pickup availability drawers shown on product pages
+  =============================================================================
+{% endcomment %}
+{% if template contains 'product' %}
+  {% render 'drawer',
+    position: 'right',
+    width: '500px',
+    mobile_width: '100%',
+    has_background: settings.drawer_background,
+    data_attribute: 'data-sizeguide-drawer',
+    color_scheme: settings.drawer_color_scheme
+  %}
+
+  {% render 'drawer',
+    position: 'right',
+    width: '550px',
+    has_background: settings.drawer_background,
+    data_attribute: 'data-pickup-availability-drawer',
+    color_scheme: settings.drawer_color_scheme
+  %}
+{% endif %}
+
+{% comment %}
+  =============================================================================
+  COLLECTION FILTER DRAWER
+  Filter drawer for collection and search pages
+  =============================================================================
+{% endcomment %}
+{% if template contains 'collection' or template contains 'search' %}
+  {% capture filter_drawer_content %}
+    {% render 'collection-filter-drawer' %}
+  {% endcapture %}
+
+  {% render 'drawer',
+    position: 'right',
+    width: '350px',
+    mobile_width: '85%',
+    has_background: settings.drawer_background,
+    data_attribute: 'data-collection-filter-drawer',
+    content: filter_drawer_content,
+    drawer_class: 'collection-filter-drawer',
+    color_scheme: settings.drawer_color_scheme
+  %}
+{% endif %}
+
+{% comment %}
+  =============================================================================
+  CART PAGE DRAWERS
+  Order notes and gift message drawers shown on cart page
+  =============================================================================
+{% endcomment %}
+{% if template contains 'cart' %}
+  {% if settings.show_notes %}
+    {% assign notes_label = 'cart.special_instructions' | t %}
+    {% capture notes_drawer_content %}
+      {% render 'cart-notes-drawer' %}
+    {% endcapture %}
+
+    {% render 'drawer',
+      position: 'right',
+      width: '500px',
+      mobile_width: '100%',
+      has_background: settings.drawer_background,
+      data_attribute: 'data-order-notes-drawer',
+      header_title: notes_label,
+      content: notes_drawer_content,
+      color_scheme: settings.drawer_color_scheme
+    %}
+  {% endif %}
+
+  {% if settings.show_gift_notes %}
+    {% assign gift_label = 'cart.gift_message' | t %}
+    {% capture gift_drawer_content %}
+      {% render 'cart-gift-notes-drawer' %}
+    {% endcapture %}
+
+    {% render 'drawer',
+      position: 'right',
+      width: '500px',
+      mobile_width: '100%',
+      has_background: settings.drawer_background,
+      data_attribute: 'data-gift-notes-drawer',
+      header_title: gift_label,
+      content: gift_drawer_content,
+      color_scheme: settings.drawer_color_scheme
+    %}
+  {% endif %}
+{% endif %}
