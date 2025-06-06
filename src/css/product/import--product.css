@@ -1,6 +1,5 @@
 /* Product page styles */
 
-/* Add product-specific styles here */
-.product-page {
-  /* Product styles */
-} 
+/* Import product-specific components */
+@import './product-form.css';
+

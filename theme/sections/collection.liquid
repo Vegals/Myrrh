@@ -5,6 +5,8 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
 
+{{ 'collection.css' | asset_url | stylesheet_tag }}
+
 <h1>{{ collection.title }}</h1>
 
 <div class="collection-products">
@@ -31,13 +33,6 @@
     {{ paginate | default_pagination }}
   {% endpaginate %}
 </div>
-
-{% stylesheet %}
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-{% endstylesheet %}
 
 {% schema %}
 {

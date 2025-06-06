@@ -1,9 +1,5 @@
 /* Product page styles */
 
-/* Import product-specific components */
-
-/* Product page styles */
-
 .product-images {
   display: grid;
   gap: 1rem;
@@ -56,5 +52,4 @@
 
 .product-form input[type="submit"]:hover {
   background-color: #555;
-}
-
+} 

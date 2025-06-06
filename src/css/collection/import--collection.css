@@ -1,5 +1,8 @@
 /* Collection page styles */
 
+/* Import collection-specific components */
+@import './collection-grid.css';
+
 /* Add collection-specific styles here */
 .collection-page {
   /* Collection styles */

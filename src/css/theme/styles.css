@@ -1,6 +1,7 @@
 /* Main theme styles */
 
-/* Add your main theme styles here */
-body {
-  /* Theme-wide styles */
-} 
+/* Import all theme-specific components */
+@import './header.css';
+@import './footer.css';
+@import './hello-world.css';
+
