@@ -4,12 +4,14 @@
     "article": "Article",
     "block": "Block",
     "blog": "Blog",
+    "buttons": "Buttons",
     "cart": "Cart",
     "collection": "Collection",
     "collections": "Collections",
     "collection_card": "Collection card",
     "collections_grid": "Collections grid",
     "colors": "Colors",
+    "colors_legacy": "Legacy Colors",
     "column": "Column",
     "content": "Content",
     "custom_section": "Custom section",
@@ -47,7 +49,26 @@
     "page_width": "Page width",
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
-    "text": "Text"
+    "text": "Text",
+    "button_border_radius": "Button border radius",
+    "base_font_size": "Base font size",
+    "navigation": "Navigation",
+    "font_family": "Font family",
+    "font_size": "Font size",
+    "letter_spacing": "Letter spacing",
+    "text_transform": "Text transform",
+    "headings": "Headings",
+    "body": "Body",
+    "featured": "Featured",
+    "links": "Links",
+    "links_hover": "Links hover",
+    "gradient": "Gradient",
+    "background_hover": "Background hover",
+    "text_hover": "Text hover",
+    "border": "Border",
+    "border_hover": "Border hover",
+    "icons": "Icons",
+    "icons_hover": "Icons hover"
   },
   "options": {
     "alignment": {
@@ -60,8 +81,8 @@
       "vertical": "Vertical"
     },
     "page_width": {
-      "narrow": "Narrow",
-      "wide": "Wide"
+      "narrow": "Narrow (1440px)",
+      "wide": "Wide (1760px)"
     },
     "size": {
       "large": "Large",
@@ -72,5 +93,9 @@
       "subtitle": "Subtitle",
       "normal": "Normal text"
     },
+    "text_transform": {
+      "none": "None",
+      "uppercase": "Uppercase"
+    }
   }
 }

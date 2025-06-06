@@ -1,12 +1,50 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "current": {}
+  "current": {
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "text": "#121212",
+          "headings": "#121212",
+          "links": "#121212",
+          "links_hover": "#121212",
+          "background": "#FFFFFF",
+          "background_gradient": "",
+          "primary_button": "#121212",
+          "on_primary_button": "#FFFFFF",
+          "primary_button_text": "#404040",
+          "primary_button_text_hover": "#FFFFFF",
+          "primary_button_border": "#FFFFFF",
+          "primary_button_border_hover": "#404040",
+          "icons": "#404040",
+          "icons_hover": "#646464"
+        }
+      }
+    },
+    "sections": {},
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "text": "#121212",
+            "headings": "#121212", 
+            "links": "#121212",
+            "links_hover": "#121212",
+            "background": "#FFFFFF",
+            "background_gradient": "",
+            "primary_button": "#121212",
+            "on_primary_button": "#FFFFFF",
+            "primary_button_text": "#404040",
+            "primary_button_text_hover": "#FFFFFF",
+            "primary_button_border": "#FFFFFF",
+            "primary_button_border_hover": "#404040",
+            "icons": "#404040",
+            "icons_hover": "#646464"
+          }
+        }
+      }
+    }
+  }
 }
