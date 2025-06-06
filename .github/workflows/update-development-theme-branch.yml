@@ -1,0 +1,62 @@
+name: Update Development Theme Branch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'theme/**'
+
+permissions:
+  contents: write
+
+jobs:
+  update-theme-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update theme branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          # Create or switch to the development-theme branch
+          git checkout development-theme 2>/dev/null || git checkout -b development-theme
+
+          # Get the commit message that triggered this workflow
+          COMMIT_MSG=$(git log -1 --format=%B ${{ github.sha }})
+
+          # Copy only the changed files from the theme folder
+          git diff --name-only ${{ github.sha }} HEAD -- theme | while read file; do
+            mkdir -p $(dirname "${file#theme/}")
+            git show ${{ github.sha }}:"$file" > "${file#theme/}"
+          done
+
+          # Stage the changes
+          git add .
+
+          # Commit and push if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "$COMMIT_MSG"
+            git push origin development-theme
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Debug information
+        if: failure()
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Directory contents:"
+          ls -la
+          echo "Git status:"
+          git status
+          echo "Git remote:"
+          git remote -v
