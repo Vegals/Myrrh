@@ -1,0 +1,87 @@
+{% comment %}
+  Video Block - Support for hosted and external videos
+{% endcomment %}
+
+<div 
+  class="video-block"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.video_url != blank %}
+    {% comment %} External video (YouTube/Vimeo) {% endcomment %}
+    {{ block.settings.video_url | video_tag: 
+       image_size: '1100x',
+       autoplay: block.settings.autoplay,
+       loop: false,
+       controls: true,
+       muted: block.settings.autoplay,
+       class: 'video-external'
+    }}
+  {% elsif block.settings.video != blank %}
+    {% comment %} Hosted video {% endcomment %}
+    {{ block.settings.video | video_tag: 
+       autoplay: block.settings.autoplay,
+       loop: false,
+       controls: true,
+       muted: block.settings.autoplay,
+       poster: block.settings.cover_image,
+       class: 'video-hosted'
+    }}
+  {% else %}
+    {% comment %} Placeholder when no video is set {% endcomment %}
+    <div class="video-placeholder">
+      {% if block.settings.cover_image %}
+        {% render 'responsive-image',
+           image: block.settings.cover_image,
+           alt: 'Video cover image',
+           class: 'video-cover',
+           max_width: 1200,
+           sizes: '(min-width: 768px) 80vw, 100vw'
+        %}
+        <div class="video-play-button">
+          <svg width="68" height="48" viewBox="0 0 68 48">
+            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#ff0000"></path>
+            <path d="M45,24 27,14 27,34" fill="#ffffff"></path>
+          </svg>
+        </div>
+      {% else %}
+        {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Video",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video file"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover image"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false,
+      "info": "Video will be muted when autoplay is enabled"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video"
+    }
+  ]
+}
+{% endschema %} 

@@ -1,0 +1,45 @@
+{% comment %}
+  Spacer Block - Responsive spacing utility
+{% endcomment %}
+
+<div 
+  class="spacer"
+  style="
+    --spacer-height-mobile: {{ block.settings.height_mobile }}px;
+    --spacer-height-desktop: {{ block.settings.height_desktop }}px;
+  "
+  {{ block.shopify_attributes }}
+></div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "settings": [
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Height (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range", 
+      "id": "height_desktop",
+      "label": "Height (desktop)",
+      "min": 0,
+      "max": 400,
+      "step": 4,
+      "unit": "px", 
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer"
+    }
+  ]
+}
+{% endschema %} 

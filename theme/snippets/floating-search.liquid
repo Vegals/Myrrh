@@ -1,0 +1,14 @@
+{% if template contains 'collection' %}
+    {% if settings.enable_search and settings.show_floating_search %}
+      <a href="{{ routes.search_url }}">
+        <button
+          id="search-button"
+          class="search-button--floating block lg:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 border bg-transparent w-11/12 md:w-3/10 px-1 py-1"
+        >
+          <div class="flex items-center justify-center w-full">
+            {{ 'layout.General.search_mobile' | t }}
+          </div>
+        </button>
+      </a>
+    {% endif %}
+  {% endif %} 

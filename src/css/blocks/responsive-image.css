@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Responsive Image Component Styles
+   ========================================================================== */
+  
+.image-placeholder {
+  background-color: var(--image-placeholder-color, #f3f4f6);
+  animation: 
+    placeholderFadeIn 0.3s ease-out forwards 0.7s,
+    imagePlaceholderPulse 2s ease-in-out infinite 0.7s;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+
+.image-loading {
+  opacity: 0;
+  will-change: opacity, transform;
+  position: relative;
+  z-index: 2;
+}
+
+/* Base image loaded styles - always becomes visible */
+.image-loaded {
+  opacity: 1;
+}
+
+/* Adjust image fade transition based on page fade setting */
+[data-page-animation="page_fade"] .image-loaded, 
+[data-page-animation="section_fade"] .image-loaded {
+  transition: opacity 0.5s ease-in-out 0.2s;
+}
+
+/* With page fade or section fade enabled, apply animation */
+[data-page-animation="page_fade"] .image-loaded,
+[data-page-animation="section_fade"] .image-loaded {
+  animation: imageFadeIn 0.5s ease-out forwards;
+}
+
+/* With page fade disabled, images pop in */
+[data-page-animation="none"] .image-loaded {
+  animation: none;
+}
+
+/* When image is loaded, fade out the placeholder */
+.image-placeholder-fading {
+  opacity: 0 !important;
+}
+
+/* Container for the image and placeholder */
+.responsive-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Error state for images that fail to load */
+.image-error {
+  position: relative;
+}
+
+.image-error::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--image-error-bg, #fef2f2);
+  z-index: 1;
+}
+
+.image-error::after {
+  content: '!';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--image-error-color, #ef4444);
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* Product media specific styles */
+.product-image .responsive-image-container img,
+.product-thumbnail .responsive-image-container img,
+.variant-images .product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+/* PhotoSwipe specific styles */
+.photoswipe-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mega menu specific styles */
+.mega-menu-image .responsive-image-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}
+
+.mega-menu-image .image-loading {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.mega-menu-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Special handling for hover images */
+.hover-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.15s ease-in;
+  will-change: opacity;
+  object-fit: cover;
+}
+
+.hover-image-container .image-loading {
+  transition: none; /* No transition for hover images */
+}
+
+.hover-image-container .image-loaded {
+  opacity: 1;
+  transition: none; /* No transition for hover images */
+  animation: none; /* No animation for hover images */
+}
+
+/* Hide placeholder for hover images */
+.hover-image-container .image-placeholder {
+  display: none;
+}
+
+/* Hover image container transitions */
+.hover-image-container.lg\:group-hover\:opacity-100 {
+  opacity: 0;
+}
+
+.group:hover .hover-image-container.lg\:group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Ensure images are visible in Theme Editor */
+.shopify-editor .image-loading {
+  opacity: 1;
+}
+
+/* Fallback for when JavaScript is disabled */
+.no-js .image-loading {
+  opacity: 1;
+}
+
+/* Mobile gallery specific styles */
+.product-gallery-mobile .image-loading {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Video and model viewer loading states */
+.video-container .image-loading,
+.model-container .image-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Cart drawer specific styles */
+.cart-drawer-item-image {
+  width: 120px; /* Back to original width */
+  flex-shrink: 0;
+}
+
+.cart-drawer-item-image .responsive-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.cart-drawer-item-image .image-loading {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cart-drawer-item-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

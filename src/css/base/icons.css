@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Icons System - Shopify Theme
+   ========================================================================== */
+
+/**
+ * Base SVG Icon System
+ *
+ * A comprehensive system for SVG icons with consistent sizing,
+ * styling, and accessibility features.
+ */
+
+/* Base SVG Styles
+   ========================================================================== */
+   svg {
+    fill: rgb(var(--icons));
+    transition:
+      fill 0.2s ease-in-out,
+      opacity 0.2s ease-in-out,
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  svg:hover {
+    fill: rgb(var(--icons-hover));
+  }
+  
+  /* Default Icon Classes
+     ========================================================================== */
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  
+  .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Icon Wrappers & Containers
+     ========================================================================== */
+  .icon-wrapper {
+    padding: 8px;
+    margin: -8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon_container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(var(--button-background));
+    color: rgb(var(--button-text));
+    transition: 
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+  }
+  
+  .icon_container:hover {
+    background-color: rgb(var(--button-background-hover));
+    color: rgb(var(--button-text-hover));
+  }
+  
+  /* Collection Sort Caret Wrapper
+     ========================================================================== */
+  .collection-sort-caret-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .collection-sort-caret-wrapper.flipped svg {
+    transform: rotate(180deg);
+  }
+  
+  .collection-sort-caret-wrapper svg {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Icon Sizes
+     ========================================================================== */
+  .icon--xs {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .icon--sm {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .icon--md {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .icon--lg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .icon--xl {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Specific Icon Types
+     ========================================================================== */
+  
+  /* Caret Icon */
+  .caret-icon {
+    stroke: rgb(var(--icons));
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .caret-icon--open {
+    transform: rotate(180deg);
+  }
+  
+  /* Button Arrow Animation */
+  .animated-arrow {
+    display: inline-flex;
+    margin-left: 5px;
+    position: relative;
+  }
+  
+  @keyframes arrow-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(4px); }
+  }
+  
+  @keyframes arrow-left {
+    0% { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes arrow-up {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+  }
+  
+  @keyframes arrow-down {
+    0% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+  }
+  
+  a:hover .animated-arrow,
+  button:hover .animated-arrow,
+  .solid-button:hover .animated-arrow,
+  .outline-button:hover .animated-arrow,
+  .link-text:hover .animated-arrow {
+    animation: arrow-right 0.3s ease forwards;
+  }
+  
+  a .animated-arrow,
+  button .animated-arrow,
+  .solid-button .animated-arrow,
+  .outline-button .animated-arrow,
+  .link-text .animated-arrow {
+    animation: arrow-left 0.3s ease forwards;
+  }
+  
+  /* Back to top button animation */
+  @keyframes back-to-top-up {
+    0% { transform: translateY(0) rotate(270deg); }
+    100% { transform: translateY(-4px) rotate(270deg); }
+  }
+  
+  @keyframes back-to-top-down {
+    0% { transform: translateY(-4px) rotate(270deg); }
+    100% { transform: translateY(0) rotate(270deg); }
+  }
+  
+  #back-to-top:hover .animated-arrow .icon {
+    animation: back-to-top-up 0.3s ease forwards;
+  }
+  
+  #back-to-top .animated-arrow .icon {
+    animation: back-to-top-down 0.3s ease forwards;
+    margin-left: 0; /* Remove left margin for back-to-top button */
+  }
+  
+  /* Remove any other transformations for the icon inside to avoid conflicts */
+  .animated-arrow .icon {
+    transform: none;
+  }
+  
+  /* Close Button Icons
+     ========================================================================== */
+  .close-button-container {
+    padding: 12px;
+    margin: -8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    z-index: 10;
+  }
+  
+  .icon-x {
+    stroke: rgb(var(--icons));
+    width: 18px;
+    height: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+  
+  .icon-x-alt {
+    stroke: var(--alt-nav-link-color) !important;
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Close Button Positions */
+  .cart-drawer-header-right-close {
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+  
+  .mobile-drawer-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  /* Close Button Hover States */
+  .close-button-container:hover .icon-x {
+    stroke: rgb(var(--icons-hover));
+  }
+  
+  .close-button-container:hover .icon-x-alt {
+    stroke: var(--alt-nav-link-color-hover);
+  }
+  
+  /* Close Button Animation */
+  .icon-x--animated {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+  
+  .close-button-container:hover .icon-x--animated {
+    transform: rotate(180deg) scale(0.9);
+  }
+  
+  /* Navigation Icons
+     ========================================================================== */
+  .icon--hamburger {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+  
+  .hamburger-icon {
+    cursor: pointer;
+    display: block;
+    width: 36px;
+    height: 36px;
+    color: rgb(var(--icons));
+    text-align: center;
+  }
+  
+  @media (max-width: 1023px) {
+    .hamburger-icon {
+      display: none;
+    }
+  }
+  
+  /* Control Icons
+     ========================================================================== */
+  .icon--minus,
+  .icon--plus {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+  
+  .icon--plus:hover,
+  .icon--minus:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Social Icons
+     ========================================================================== */
+  .social-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Directional Icons
+     ========================================================================== */
+  .icon-arrow-up {
+    transform: rotate(270deg);
+  }
+  
+  .icon-arrow-right {
+    transform: rotate(0deg);
+  }
+  
+  .icon-arrow-down {
+    transform: rotate(90deg);
+  }
+  
+  .icon-arrow-left {
+    transform: rotate(180deg);
+  }
+  
+  /* Icon Transforms
+     ========================================================================== */
+  .transform-rotate-90 {
+    transform: rotate(90deg);
+    display: inline-block;
+  }
+  
+  .transform-rotate-270 {
+    transform: rotate(270deg);
+    display: inline-block;
+  }
+  
+  /* Responsive Adjustments
+     ========================================================================== */
+  @media screen and (max-width: 768px) {
+    .icon-x,
+    .icon-x-alt {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .social-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  /* Accessibility Considerations
+     ========================================================================== */
+  /* 
+   * For screen readers, we have the following recommendations that should be implemented:
+   * 1. For icons that have meaning, include an aria-label on the SVG
+   * 2. For decorative icons, use aria-hidden="true" and role="presentation"
+   */
+  
+  /* Animation Utilities
+     ========================================================================== */
+  .icon--spin {
+    animation: icon-spin 2s linear infinite;
+  }
+  
+  .icon--pulse {
+    animation: icon-pulse 1s ease-in-out infinite;
+  }
+  
+  @keyframes icon-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes icon-pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .back-to-top-arrow {
+    transform: rotate(270deg);
+  }
+    

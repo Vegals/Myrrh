@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Collections Grid Section Component
+   ========================================================================== */
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.collection-card {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.collection-card:hover {
+  transform: translateY(-2px);
+} 

@@ -1,0 +1,128 @@
+{% comment %}
+  Product Card Block - Display individual product
+{% endcomment %}
+
+<div 
+  class="product-card product-card--{{ block.settings.image_ratio }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.product != blank %}
+    {% assign product = block.settings.product %}
+    
+    <div class="product-card__image">
+      <a href="{{ product.url }}" class="product-card__image-link">
+        {% if product.featured_media %}
+          {% render 'responsive-image',
+             image: product.featured_media,
+             alt: product.featured_media.alt | default: product.title,
+             class: 'product-card__img',
+             max_width: 600,
+             sizes: '(min-width: 768px) 25vw, 50vw',
+             type: 'product'
+          %}
+        {% else %}
+          {% render 'responsive-image', type: 'product', class: 'product-card__img' %}
+        {% endif %}
+      </a>
+    </div>
+    
+    <div class="product-card__info">
+      {% if block.settings.show_vendor and product.vendor != blank %}
+        <div class="product-card__vendor">{{ product.vendor }}</div>
+      {% endif %}
+      
+      <h3 class="product-card__title {{ block.settings.title_size }}">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </h3>
+      
+      {% if block.settings.show_rating and product.metafields.reviews.rating.value != blank %}
+        <div class="product-card__rating">
+          <!-- Rating display will be implemented -->
+          <span class="rating">{{ product.metafields.reviews.rating.value | round: 1 }} ★</span>
+        </div>
+      {% endif %}
+      
+      <div class="product-card__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="price price--on-sale">
+            <span class="price__current">{{ product.price | money }}</span>
+            <span class="price__compare">{{ product.compare_at_price | money }}</span>
+          </span>
+        {% else %}
+          <span class="price">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="product-card__placeholder">
+      {% render 'responsive-image', type: 'product', class: 'product-card__img' %}
+      <div class="product-card__info">
+        <h3 class="product-card__title {{ block.settings.title_size }}">Product Title</h3>
+        <div class="product-card__price">$29.99</div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Card",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        { "value": "text-sm", "label": "Small" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "Large" },
+        { "value": "text-sm lg:text-base", "label": "Small / desktop Base" },
+        { "value": "text-base lg:text-lg", "label": "Base / desktop Large" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "default": "square"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Card"
+    }
+  ]
+}
+{% endschema %} 

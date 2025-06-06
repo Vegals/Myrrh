@@ -1,0 +1,126 @@
+{% comment %}
+  Newsletter Signup Block - Email collection form
+{% endcomment %}
+
+<div 
+  class="newsletter-block"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.heading != blank %}
+    <h3 class="newsletter__heading {{ block.settings.heading_size }}">{{ block.settings.heading }}</h3>
+  {% endif %}
+  
+  {% if block.settings.description != blank %}
+    <div class="newsletter__description">
+      {{ block.settings.description }}
+    </div>
+  {% endif %}
+  
+  {% form 'customer', class: 'newsletter__form' %}
+    {% if form.posted_successfully? %}
+      <div class="newsletter__success" role="alert">
+        <p>{{ block.settings.success_message | default: 'Thank you for subscribing!' }}</p>
+      </div>
+    {% else %}
+      <div class="newsletter__form-fields">
+        <div class="field">
+          <input 
+            type="email" 
+            name="contact[email]" 
+            id="newsletter-{{ block.id }}"
+            placeholder="{{ block.settings.placeholder_text }}"
+            value="{{ form.email }}"
+            aria-label="Email address"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            required
+            class="field__input"
+          >
+          <label for="newsletter-{{ block.id }}" class="field__label">Email</label>
+        </div>
+        
+        <button type="submit" class="button button--primary newsletter__submit">
+          {{ block.settings.button_text }}
+        </button>
+      </div>
+      
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      
+      {% if block.settings.privacy_text != blank %}
+        <div class="newsletter__privacy">
+          <p>{{ block.settings.privacy_text }}</p>
+        </div>
+      {% endif %}
+      
+      {% if form.errors %}
+        <div class="newsletter__errors" role="alert">
+          {% for error in form.errors %}
+            <p class="form__message">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endform %}
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter Signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you for subscribing!"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "text-lg", "label": "Large" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-lg lg:text-xl", "label": "Large / desktop XL" },
+        { "value": "text-xl lg:text-2xl", "label": "XL / desktop 2XL" }
+      ],
+      "default": "text-xl"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy text",
+      "info": "Optional privacy notice below the form"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Signup"
+    }
+  ]
+}
+{% endschema %} 

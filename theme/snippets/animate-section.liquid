@@ -1,0 +1,17 @@
+{% comment %}
+  Section Animation Snippet - 2025 Modern Animations
+  
+  Provides animation attributes based on the page_animation setting.
+  Used by section-wrapper for consistent section animations.
+{% endcomment %}
+
+{% if settings.page_animation == 'section_fade' %}
+  data-aos="fade"
+{% elsif settings.page_animation == 'section_slide_up' %}
+  data-aos="fade-up" 
+  data-aos-offset="100"
+{% elsif settings.page_animation == 'section_scale_out' %}
+  data-scale-out-animation
+{% else %}
+  data-aos="none"
+{% endif %} 

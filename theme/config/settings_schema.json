@@ -355,6 +355,30 @@
         "unit": "px",
         "label": "t:labels.page_margin",
         "default": 20
+      },
+      {
+        "type": "select",
+        "id": "page_animation",
+        "label": "t:labels.page_animation",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:options.animation.none"
+          },
+          {
+            "value": "section_fade",
+            "label": "t:options.animation.fade"
+          },
+          {
+            "value": "section_slide_up",
+            "label": "t:options.animation.slide_up"
+          },
+          {
+            "value": "section_scale_out",
+            "label": "t:options.animation.scale_out"
+          }
+        ],
+        "default": "section_fade"
       }
     ]
   },

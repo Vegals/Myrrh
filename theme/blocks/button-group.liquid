@@ -1,0 +1,62 @@
+{% comment %}
+  Button Group Block - Container for multiple buttons
+{% endcomment %}
+
+<div 
+  class="button-group button-group--{{ block.settings.layout }}"
+  style="--text-align: {{ block.settings.alignment }}"
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Button Group",
+  "blocks": [{ "type": "@theme" }],
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Button Group",
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "text": "Primary Action"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "text": "Secondary Action",
+            "style": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

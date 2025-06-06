@@ -6,7 +6,7 @@
 {% enddoc %}
 
 <div
-  class="text {{ block.settings.text_style }}"
+  class="text text--{{ block.settings.text_style }} {{ block.settings.text_size }} color-{{ block.settings.color_scheme }}"
   style="--text-align: {{ block.settings.alignment }}"
   {{ block.shopify_attributes }}
 >
@@ -15,32 +15,66 @@
 
 {% schema %}
 {
-  "name": "t:general.text",
+  "name": "Text",
   "settings": [
     {
-      "type": "text",
+      "type": "richtext",
       "id": "text",
-      "label": "t:labels.text",
-      "default": "Text"
+      "label": "Text content",
+      "default": "<p>Text</p>"
     },
     {
       "type": "select",
       "id": "text_style",
-      "label": "t:labels.text_style",
+      "label": "Text style",
       "options": [
-        { "value": "text--title", "label": "t:options.text_style.title" },
-        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
-        { "value": "text--normal", "label": "t:options.text_style.normal" }
+        { "value": "heading-1", "label": "Heading 1" },
+        { "value": "heading-2", "label": "Heading 2" },
+        { "value": "heading-3", "label": "Heading 3" },
+        { "value": "body-large", "label": "Body Large" },
+        { "value": "body", "label": "Body" },
+        { "value": "caption", "label": "Caption" }
       ],
-      "default": "text--title"
+      "default": "body"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        { "value": "text-xs", "label": "XS" },
+        { "value": "text-sm", "label": "S" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "L" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-lg lg:text-xl", "label": "L / desktop XL" },
+        { "value": "text-xl lg:text-2xl", "label": "XL / desktop 2XL" },
+        { "value": "text-xl lg:text-3xl", "label": "XL / desktop 3XL" },
+        { "value": "text-2xl lg:text-4xl", "label": "2XL / desktop 4XL" },
+        { "value": "text-2xl lg:text-5xl", "label": "2XL / desktop 5XL" },
+        { "value": "text-3xl lg:text-6xl", "label": "3XL / desktop 6XL" }
+      ],
+      "default": "text-base"
     },
     {
       "type": "text_alignment",
       "id": "alignment",
-      "label": "t:labels.alignment",
+      "label": "Text alignment",
       "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
     }
   ],
-  "presets": [{ "name": "t:general.text" }]
+  "presets": [
+    { "name": "Text" },
+    { "name": "Heading", "settings": { "text_style": "heading-2" } },
+    { "name": "Caption", "settings": { "text_style": "caption" } }
+  ]
 }
 {% endschema %}

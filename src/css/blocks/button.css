@@ -1,0 +1,208 @@
+/* Button Block Styles */
+.button-block {
+  text-align: var(--text-align);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-family-base);
+  font-weight: 500;
+  line-height: 1.2;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Button Sizes */
+.button--small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+.button--medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.button--large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  min-height: 52px;
+}
+
+/* Button Styles */
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: var(--color-accent);
+}
+
+.button--primary:hover,
+.button--primary:focus {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.button--secondary {
+  background-color: var(--color-background-2);
+  color: var(--color-foreground);
+  border-color: var(--color-border);
+}
+
+.button--secondary:hover,
+.button--secondary:focus {
+  background-color: var(--color-background-3);
+  border-color: var(--color-foreground);
+  transform: translateY(-1px);
+}
+
+.button--outline {
+  background-color: transparent;
+  color: var(--color-foreground);
+  border-color: var(--color-foreground);
+}
+
+.button--outline:hover,
+.button--outline:focus {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  transform: translateY(-1px);
+}
+
+.button--link {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.button--link:hover,
+.button--link:focus {
+  color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+/* Button Components */
+.button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+.button__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2px;
+}
+
+.button__text {
+  flex-grow: 1;
+}
+
+/* Icon-only buttons */
+.button:has(.button__icon):not(:has(.button__text)) {
+  padding: 0.75rem;
+  aspect-ratio: 1;
+}
+
+.button--small:has(.button__icon):not(:has(.button__text)) {
+  padding: 0.5rem;
+}
+
+.button--large:has(.button__icon):not(:has(.button__text)) {
+  padding: 1rem;
+}
+
+/* Loading State */
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button[disabled]:hover {
+  transform: none;
+}
+
+/* External Link Icon Auto-detection */
+.button[target="_blank"] .button__text::after {
+  content: '';
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.3em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M10 14L21 3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .button {
+    border-width: 3px;
+  }
+  
+  .button--primary {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+  
+  .button--outline {
+    border-width: 3px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:hover,
+  .button:focus {
+    transform: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .button--secondary {
+    background-color: var(--color-background-3);
+  }
+  
+  .button--outline {
+    border-color: var(--color-border);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767px) {
+  .button {
+    min-height: 44px; /* Touch target minimum */
+  }
+  
+  .button--small {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+} 

@@ -1,16 +1,29 @@
-/* Main theme styles */
+/* ==========================================================================
+   Main Theme Styles - Entry Point
+   ========================================================================== */
 
-/* Import typography first */
+/* Base System Files */
+@import '../base/animations.css';
+@import '../base/utilities.css';
+
+/* Typography Foundation */
 @import './typography.css';
 
-/* Import all theme-specific components */
+/* Layout Components */
 @import './header.css';
 @import './footer.css';
-@import './hello-world.css';
+
+/* Content Components */
 @import './image.css';
 @import './search.css';
-@import './collections-grid.css';
-@import './custom-section.css';
-@import './blocks.css';
+
+/* Section Components */
+@import '../sections/collections-grid.css';
+@import '../sections/custom-section.css';
+
+/* Block System */
+@import '../blocks/blocks.css';
+@import '../blocks/responsive-image.css';
+@import '../blocks/button.css';
 
 

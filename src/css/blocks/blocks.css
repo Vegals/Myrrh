@@ -33,4 +33,17 @@
 
 .text--subtitle {
   font-size: 1.5rem;
+}
+
+/* General Block Styles */
+
+/* Block wrappers */
+[class*="-block"] {
+  position: relative;
+}
+
+/* Block content containers */
+.block-content {
+  position: relative;
+  z-index: 2;
 } 

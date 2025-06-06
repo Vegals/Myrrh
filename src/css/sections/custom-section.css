@@ -1,4 +1,6 @@
-/* Custom section styles - extracted from theme/sections/custom-section.liquid */
+/* ==========================================================================
+   Custom Section Component
+   ========================================================================== */
 
 .custom-section {
   position: relative;

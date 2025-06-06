@@ -219,14 +219,6 @@ label {
 }
 
 /* Accessibility improvements */
-.visually-hidden {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
 
 /* Focus states for better accessibility */
 *:focus {
@@ -363,9 +355,7 @@ h6 {
     letter-spacing: var(--heading-letter-spacing);
 }
 
-.uppercase {
-    text-transform: uppercase;
-}
+
 
 /* Italic Text Fixes for Articles */
 .prose i,
