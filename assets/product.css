@@ -1,6 +1,60 @@
 /* Product page styles */
 
-/* Add product-specific styles here */
-.product-page {
-  /* Product styles */
-} 
+/* Import product-specific components */
+
+/* Product page styles */
+
+.product-images {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-info {
+  margin-bottom: 2rem;
+}
+
+.product-info h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.product-info p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.product-form select,
+.product-form input[type="text"],
+.product-form input[type="submit"] {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.product-form input[type="submit"] {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.product-form input[type="submit"]:hover {
+  background-color: #555;
+}
+

@@ -789,10 +789,6 @@ select {
   flex-wrap: wrap;
 }
 
-.border {
-  border-width: 1px;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
