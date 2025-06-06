@@ -314,6 +314,16 @@
         "step": 1,
         "unit": "px",
         "default": 0
+      },
+      {
+        "type": "range",
+        "id": "input_corner_radius",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.input_corner_radius",
+        "default": 4
       }
     ]
   },
@@ -349,7 +359,7 @@
     ]
   },
   {
-    "name": "t:general.colors_legacy",
+    "name": "t:general.theme_settings",
     "settings": [
       {
         "type": "color",
@@ -362,16 +372,6 @@
         "id": "foreground_color",
         "default": "#333333",
         "label": "t:labels.foreground"
-      },
-      {
-        "type": "range",
-        "id": "input_corner_radius",
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "unit": "px",
-        "label": "t:labels.input_corner_radius",
-        "default": 4
       }
     ]
   }
