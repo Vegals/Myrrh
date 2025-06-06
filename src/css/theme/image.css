@@ -1,0 +1,14 @@
+/* Image component styles - extracted from theme/snippets/image.liquid */
+
+.image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.image > img {
+  width: 100%;
+  height: auto;
+} 

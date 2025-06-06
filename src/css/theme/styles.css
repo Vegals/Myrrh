@@ -1,7 +1,16 @@
 /* Main theme styles */
 
+/* Import typography first */
+@import './typography.css';
+
 /* Import all theme-specific components */
 @import './header.css';
 @import './footer.css';
 @import './hello-world.css';
+@import './image.css';
+@import './search.css';
+@import './collections-grid.css';
+@import './custom-section.css';
+@import './blocks.css';
+
 

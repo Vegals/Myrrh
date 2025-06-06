@@ -1,7 +1,3 @@
-/* Main theme styles */
-
-/* Import typography first */
-
 /* ==========================================================================
    Base Typography
    ========================================================================== */
@@ -9,7 +5,6 @@
 /* Typography System - 2025 Shopify Best Practices */
 
 /* Base Typography with Performance Optimization */
-
 * {
   /* Modern font rendering for crisp text */
   -webkit-font-smoothing: antialiased;
@@ -33,7 +28,6 @@ body {
 }
 
 /* Heading Hierarchy with Proper Scaling */
-
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: var(--heading-font-family);
@@ -50,7 +44,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Modern fluid typography scaling */
-
 h1, .h1 { 
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: var(--heading-font-weight-bold, 700);
@@ -82,14 +75,12 @@ h6, .h6 {
 }
 
 /* Enhanced text styles for rich content */
-
 p {
   margin: 0 0 1rem 0;
   line-height: 1.6;
 }
 
 /* Improved italic handling for articles and rich text */
-
 article em,
 article i,
 .rte em,
@@ -126,7 +117,6 @@ article i b,
 }
 
 /* Quote styling */
-
 blockquote {
   font-family: var(--featured-font-family);
   font-size: 1.25rem;
@@ -138,7 +128,6 @@ blockquote {
 }
 
 /* Lists with proper spacing */
-
 ul, ol {
   margin: 0 0 1rem 0;
   padding-left: 1.5rem;
@@ -149,14 +138,12 @@ li {
 }
 
 /* Small text and captions */
-
 small, .small {
   font-size: 0.875rem;
   line-height: 1.4;
 }
 
 /* Featured/Display text styling */
-
 .featured-text,
 .display-text {
   font-family: var(--featured-font-family);
@@ -167,7 +154,6 @@ small, .small {
 }
 
 /* Navigation link styling */
-
 .nav-link {
   font-family: var(--menu-font-family);
   font-weight: var(--menu-font-weight);
@@ -185,7 +171,6 @@ small, .small {
 }
 
 /* Header menu container */
-
 .header__menu {
   display: flex;
   gap: 1rem;
@@ -193,7 +178,6 @@ small, .small {
 }
 
 /* Footer links */
-
 .footer__links a {
   font-family: var(--body-font-family);
   font-size: 0.875rem;
@@ -207,7 +191,6 @@ small, .small {
 }
 
 /* Button typography */
-
 button,
 .button,
 .btn,
@@ -221,7 +204,6 @@ input[type="button"] {
 }
 
 /* Form elements typography */
-
 input,
 textarea,
 select {
@@ -237,7 +219,6 @@ label {
 }
 
 /* Accessibility improvements */
-
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
@@ -248,14 +229,12 @@ label {
 }
 
 /* Focus states for better accessibility */
-
 *:focus {
   outline: 2px solid rgb(var(--link-color));
   outline-offset: 2px;
 }
 
 /* Mobile typography optimizations */
-
 @media screen and (max-width: 768px) {
   body {
     /* Slightly larger base font for mobile readability */
@@ -282,7 +261,6 @@ label {
 }
 
 /* High contrast mode support */
-
 @media (prefers-contrast: high) {
   body {
     -webkit-font-smoothing: auto;
@@ -291,7 +269,6 @@ label {
 }
 
 /* Reduced motion support */
-
 @media (prefers-reduced-motion: reduce) {
   .nav-link,
   a {
@@ -300,7 +277,6 @@ label {
 }
 
 /* Print styles */
-
 @media print {
   body {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -322,7 +298,6 @@ label {
 }
 
 /* Heading Typography */
-
 h1,
 h2,
 h3,
@@ -344,31 +319,26 @@ h1 {
 }
 
 /* text-4xl equivalent */
-
 h2 {
     font-size: 1.875rem;
 }
 
 /* text-3xl equivalent */
-
 h3 {
     font-size: 1.5rem;
 }
 
 /* text-2xl equivalent */
-
 h4 {
     font-size: 1.25rem;
 }
 
 /* text-xl equivalent */
-
 h5 {
     font-size: 1.125rem;
 }
 
 /* text-lg equivalent */
-
 h6 {
     font-size: 1rem;
 }
@@ -398,7 +368,6 @@ h6 {
 }
 
 /* Italic Text Fixes for Articles */
-
 .prose i,
 .prose em,
 .rte i,
@@ -421,7 +390,6 @@ h6 {
 }
 
 /* Additional italic support for article content */
-
 .w-padding.prose i,
 .w-padding.prose em,
 .article-content i,
@@ -433,7 +401,6 @@ h6 {
 }
 
 /* Bold italic combinations */
-
 .w-padding.prose strong i,
 .w-padding.prose strong em,
 .w-padding.prose b i,
@@ -452,7 +419,6 @@ h6 {
 }
 
 /* Specific targeting for article template classes */
-
 article .prose i,
 article .prose em,
 article .rte i,
@@ -464,271 +430,13 @@ article .rte em,
 }
 
 /* Override CSS reset for italic elements globally */
-
 i, em {
   font-style: italic !important;
 }
 
 /* Ensure proper font-family for all italic text */
-
 body i,
 body em {
   font-family: var(--body-font-family) !important;
   font-style: italic !important;
-}
-
-/* Import all theme-specific components */
-
-/* Header styles - extracted from theme/sections/header.liquid */
-
-header {
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header a {
-  position: relative;
-  text-decoration: none;
-  color: var(--color-foreground);
-}
-
-header a sup {
-  position: absolute;
-  left: 100%;
-  overflow: hidden;
-  max-width: var(--page-margin);
-}
-
-header svg {
-  width: 2rem;
-}
-
-header .header__menu,
-header .header__icons {
-  display: flex;
-  gap: 1rem;
-}
-
-/* Footer styles - extracted from theme/sections/footer.liquid */
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-footer a {
-  text-decoration: none;
-  color: var(--color-foreground);
-}
-
-footer .footer__links,
-footer .footer__payment {
-  display: flex;
-  gap: 1rem;
-}
-
-/* Hello World section styles - extracted from theme/sections/hello-world.liquid */
-
-.welcome {
-  display: grid;
-  grid-template-columns: var(--content-grid);
-  background-color: #f6f6f7;
-  padding: 72px 0;
-}
-
-.welcome-content {
-  grid-column: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  padding: 0 24px;
-}
-
-.welcome-description {
-  max-width: 80ch;
-  line-height: 1.4;
-  margin-top: 1.5rem;
-}
-
-.icon {
-  width: 300px;
-}
-
-.highlights {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 50px;
-}
-
-@media (max-width: 1100px) {
-  .highlights {
-    grid-template-columns: 1fr;
-  }
-}
-
-.highlight {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: #eef3ff;
-  color: rgb(92, 95, 98);
-  line-height: 1.4;
-}
-
-.highlight > * + * {
-  margin-top: 1rem;
-}
-
-.highlight h3 {
-  font-size: 1rem;
-  color: rgb(32, 34, 35);
-}
-
-.highlight-description {
-  flex: 1 1;
-}
-
-.highlight a {
-  display: flex;
-  width: fit-content;
-  background-color: rgb(250, 251, 251);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 0px 0px inset, rgba(255, 255, 255, 0.9) 0px 2px 0px 0px inset;
-  border: 1px solid rgb(140, 145, 150);
-  border-radius: 4px;
-  color: rgb(92, 95, 98);
-  padding: 3px 10px 5px;
-  text-decoration: none;
-}
-
-/* Image component styles - extracted from theme/snippets/image.liquid */
-
-.image {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-}
-
-.image > img {
-  width: 100%;
-  height: auto;
-}
-
-/* Search page styles - extracted from theme/sections/search.liquid */
-
-.search-results {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-
-.search-results .prev,
-.search-results .page,
-.search-results .next {
-  grid-column: 1 / -1;
-}
-
-/* Collections grid styles - extracted from theme/sections/collections.liquid */
-
-.collections {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(var(--collection-card-size), 100%), 1fr));
-  gap: var(--grid-gap);
-}
-
-.collections--compact {
-  --collection-card-size: 160px;
-}
-
-.collections--full {
-  --collection-card-size: 280px;
-}
-
-.collection-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Custom section styles - extracted from theme/sections/custom-section.liquid */
-
-.custom-section {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.custom-section__background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.custom-section__background img {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.custom-section__content {
-  display: grid;
-  grid-template-columns: var(--content-grid);
-}
-
-.custom-section__content > * {
-  grid-column: 2;
-}
-
-/* Block component styles - extracted from theme/blocks/ */
-
-/* Group block styles - from theme/blocks/group.liquid */
-
-.group {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  width: 100%;
-}
-
-.group--horizontal {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--padding);
-}
-
-.group--vertical {
-  flex-direction: column;
-  align-items: var(--alignment);
-  padding: var(--padding) 0;
-}
-
-/* Text block styles - from theme/blocks/text.liquid */
-
-.text {
-  text-align: var(--text-align);
-}
-
-.text--title {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.text--subtitle {
-  font-size: 1.5rem;
-}
-
-
+} 

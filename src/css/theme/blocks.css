@@ -1,0 +1,36 @@
+/* Block component styles - extracted from theme/blocks/ */
+
+/* Group block styles - from theme/blocks/group.liquid */
+.group {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.group--horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding);
+}
+
+.group--vertical {
+  flex-direction: column;
+  align-items: var(--alignment);
+  padding: var(--padding) 0;
+}
+
+/* Text block styles - from theme/blocks/text.liquid */
+.text {
+  text-align: var(--text-align);
+}
+
+.text--title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text--subtitle {
+  font-size: 1.5rem;
+} 
